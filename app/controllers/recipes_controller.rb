@@ -14,7 +14,8 @@ class RecipesController < ApplicationController
       flash[:notice] = "Recipe has been created."
       redirect_to @recipe
     else
-      # nothing, yet
+      flash[:alert] = "Recipe has not been created."
+      render :action => "new"
     end
   end
 
@@ -23,7 +24,7 @@ class RecipesController < ApplicationController
   end
 
 private
-  # rails 4 of whitelising params.  Instead of att_accessible on the Model
+  # rails 4 of whitelisting params.  Instead of att_accessible on the Model
   def recipe_params
     params.require(:recipe).permit(:title, :description, :preptime, :servings)
   end
