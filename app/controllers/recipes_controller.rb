@@ -37,6 +37,13 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    flash[:notice] = "Recipe has been deleted."
+    redirect_to recipes_path
+  end
+
 private
   # rails 4 of whitelisting params.  Instead of att_accessible on the Model
   def recipe_params
