@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_filter :find_recipe, :only => [:show,:edit,
+                                       :update, :destroy]
   def index
     @recipes = Recipe.all
   end
@@ -43,6 +45,15 @@ class RecipesController < ApplicationController
     flash[:notice] = "Recipe has been deleted."
     redirect_to recipes_path
   end
+
+private
+  def find_recipe
+    @recipe = Recipe.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The recipe you were looking" +
+                    " for could not be found."
+    redirect_to recipes_path
+end
 
 private
   # rails 4 of whitelisting params.  Instead of att_accessible on the Model
