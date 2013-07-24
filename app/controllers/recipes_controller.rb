@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       flash[:notice] = "Recipe has been created."
@@ -21,6 +20,21 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+  end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update_attributes(recipe_params) #anytime writing to db need (recipe_params)
+      flash[:notice] = "Recipe has been updated."
+      redirect_to @recipe
+    else
+      flash[:alert] = "Recipe has not been updated."
+      render :action => "edit"
+    end
   end
 
 private
