@@ -8,16 +8,12 @@ feature 'Creating Recipes' do
 
   scenario "can create a recipe" do
     fill_in 'Title', :with => 'My favorite dish'
-    fill_in 'Meal Type', :with => 'Dinner'
-    fill_in 'Prep Time', :with => "10 minutes"
-    fill_in 'Servings', :with => "4"
     click_button "Create Recipe"
     page.should have_content('Recipe has been created.')
 
     recipe = Recipe.find_by_title("My favorite dish")
     page.current_url.should == recipe_url(recipe)
-    title = "My favorite dish - Recipes - Ebook"
-    find("title").should have_content(title)
+    find("title").should have_content("Recipes - Ebook")
   end
 
   scenario "cannot create a recipe without a title" do

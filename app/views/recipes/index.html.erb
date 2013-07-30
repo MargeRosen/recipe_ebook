@@ -2,6 +2,12 @@
 <h2>Recipes</h2>
 <ul>
   <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.title, recipe %></li>
+    <li><%= link_to recipe.title, recipe %>
+    <%= link_to "Edit Recipe ", edit_recipe_path(recipe) %>
+    <%= link_to "Delete Recipe ", recipe_path(recipe),
+      :method => :delete,
+      data: { confirm: 'Are you sure you want to delete this recipe?' } %>
+     <%# Removed :confirm ... due to DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.1. Use 'data: { confirm: 'Text' }' instead. %>
+      </li>
   <% end %>
 </ul>

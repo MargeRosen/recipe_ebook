@@ -1,19 +1,19 @@
 
 Q:
-Should "recipe" used instead of "Projects" projects_controller.rb and ProjectsController
+Should "recipe" used instead of "recipes" recipes_controller.rb and recipesController
 
 
 
 
 If you get this error:
 
-  rspec spec/integration/creating_projects_spec.rb
-  /usr/local/rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.2/lib/rspec/core/configuration.rb:896:in `load': cannot load such file -- /Users/Laptop1/recipe_ebook/spec/integration/spec/integration/creating_projects_spec.rb (LoadError)
+  rspec spec/integration/creating_recipes_spec.rb
+  /usr/local/rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.2/lib/rspec/core/configuration.rb:896:in `load': cannot load such file -- /Users/Laptop1/recipe_ebook/spec/integration/spec/integration/creating_recipes_spec.rb (LoadError)
 
 Check to make sure you are running the spec from the correct directory!
 
 Ran rails generate controller recipes  instead of
-  rails generate controller projects
+  rails generate controller recipes
 
 
 recipe_ebook git:(master) ✗ rake routes
