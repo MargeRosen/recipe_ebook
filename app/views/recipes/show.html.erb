@@ -1,18 +1,22 @@
 <%= title(@recipe.title, "Recipes") %>
- <h2><%= @recipe.title %></h2>
-  <%= link_to "New Instruction", new_recipe_instruction_path(@recipe) %>
-  <%= link_to "Edit Recipe ", edit_recipe_path(@recipe) %>
-  <%= link_to "Delete Recipe ",
+  <h2><%= @recipe.title %></h2>
+      <%= @recipe.description %>
+  <p>Prep time:  <%=@recipe.preptime %></p>
+  <p>Serves:  <%=@recipe.servings %></p>
+      <%#= link_to "New Instruction", new_recipe_instruction_path(@recipe) %>
+      <%= link_to "Edit Recipe ", edit_recipe_path(@recipe)%>
+      <%= link_to "Delete Recipe ",
         recipe_path(@recipe),
         :method => :delete,
         data: { confirm: 'Are you sure you want to delete this recipe?' } %>
      <%# Removed :confirm ... due to DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.1. Use 'data: { confirm: 'Text' }' instead. %>
-  <%= link_to "Back to Recipes Page", recipes_path %>
+      <%#= link_to "Back to Recipes Page", recipes_path %>
 
   <ul id='instructions'>
     <% @recipe.instructions.each do |instruction| %>
       <li>
-        <%= link_to instruction.title, [@recipe, instruction] %>
+        Ingredients <%=instruction.ingredient %><br>
+        Directions <%=instruction.directions %>
       </li>
     <% end %>
     <h4><%= link_to "New Instruction", new_recipe_instruction_path(@recipe) %></h4>

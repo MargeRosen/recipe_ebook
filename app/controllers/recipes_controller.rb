@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  #before_filter :find_recipe, :only => [:show,:edit,
-  #                                     :update, :destroy]
+  before_filter :find_recipe, :only => [:show,:edit,
+                                       :update, :destroy]
   def index
     @recipes = Recipe.all
   end
@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
       redirect_to @recipe
     else
       flash[:alert] = "Recipe has not been created."
+      @recipe = Recipe.all
       render :action => "new"
     end
   end

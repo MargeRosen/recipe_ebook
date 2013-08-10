@@ -1,12 +1,11 @@
 <div id='instructions'>
-  <h2><%= title(@instructions.title "Instructions")%></h2>
+  <h2><%= title(@recipe.title, "Recipes") %></h2>
+  <h2><%= @recipe.title %></h2>
+  <p>Ingredients: <%= @instruction.ingredient %></p>
+  <p>Directions: <%= @instruction.directions %></p>
   <%= link_to "New Instruction", new_recipe_instruction_path(@recipe) %>
-  <%= link_to "Edit Instruction ", [:edit, @recipe, @instructions] %>
-  <%= link_to "Delete Instruction",
-     [@recipe, @instruction],
+  <%= link_to "Edit Instruction ", edit_recipe_instruction_path (@instructions) %>
+  <%= link_to "Delete Instruction", [@recipe, @instruction],
      :method => :delete,
-     data: { confirm: 'Are you sure you want to delete these instructions?' } %>
-     <%# Removed :confirm ... due to DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.1. Use 'data: { confirm: 'Text' }' instead. %>
-  <%= @instructions.ingredient %>
-  <%= @instructions.directions %>
+     data: { confirm: "Are you sure you want to delete these instructions?" } %>
 </div>

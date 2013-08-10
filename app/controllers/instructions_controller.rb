@@ -7,7 +7,7 @@ class InstructionsController < ApplicationController
   end
 
   def create
-    @instruction = @recipe.instructions.build(params[:instruction])
+    @instruction = @recipe.instructions.build(instruction_params)
     if @instruction.save
       flash[:notice] = "Instructions have been created."
       redirect_to [@recipe, @instruction]
@@ -52,7 +52,7 @@ class InstructionsController < ApplicationController
   end
 
   def find_instruction
-    @instruction = @find_recipe.instructions.find(params[:id])
+    @instruction = Instruction.find(params[:id])
     rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The instructions you were looking" +
                     " for could not be found."
