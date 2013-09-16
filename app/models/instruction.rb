@@ -1,5 +1,5 @@
 class Instruction < ActiveRecord::Base
   belongs_to :recipe
-  validates :title, :presence => true
-  validates :description, :presence => true
+  validates :ingredient, :presence => true
+  validates :directions, :presence => true
 end

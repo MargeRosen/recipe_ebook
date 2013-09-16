@@ -9,9 +9,9 @@ feature "Creating Instructions" do
   end
 
   scenario "Creating an Instruction" do
-    fill_in "ingredient", :with => "Ingredient with measurement"
-    fill_in "directions", :with => "Complete these procedures"
-    click_button "Create Instruction"  #this must match with recipes/show.html
+    fill_in "Ingredient", :with => "Ingredient with measurement"
+    fill_in "Directions", :with => "Directions with procedures"
+    click_button "Create Instruction"
     page.should have_content("Instructions have been created.")
   end
 

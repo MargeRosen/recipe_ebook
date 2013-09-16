@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  before_filter :find_recipe, :only => [:show,:edit,
-                                       :update, :destroy]
+  before_filter :find_recipe, :only => [:show, :edit, :update, :destroy]
+
   def index
     @recipes = Recipe.all
   end
@@ -16,7 +16,6 @@ class RecipesController < ApplicationController
       redirect_to @recipe
     else
       flash[:alert] = "Recipe has not been created."
-      @recipe = Recipe.all
       render :action => "new"
     end
   end
@@ -55,7 +54,6 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
-  # rails 4 of whitelisting params.  Instead of att_accessible on the Model
   def recipe_params
     params.require(:recipe).permit( :title, :description, :preptime, :servings)
   end
