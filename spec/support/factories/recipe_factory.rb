@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :recipe do
-    title "Example recipe"
+    title "My favorite dish"
   end
 end

@@ -9,14 +9,13 @@ feature "Creating Instructions" do
   end
 
   scenario "Creating an Instruction" do
-    fill_in "Ingredient", :with => "Ingredients with measurement"
-    fill_in "Directions", :with => "Complete these procedures"
+    fill_in "ingredient", :with => "Ingredient with measurement"
+    fill_in "directions", :with => "Complete these procedures"
     click_button "Create Instruction"  #this must match with recipes/show.html
     page.should have_content("Instructions have been created.")
   end
 
   scenario "Creating an Instruction without valid attributes fails" do
-    click_link "New Instruction"
     click_button "Create Instruction"
     page.should have_content("Instructions have not been created.")
     page.should have_content("Ingredient can't be blank")

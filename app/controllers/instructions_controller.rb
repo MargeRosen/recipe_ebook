@@ -6,6 +6,11 @@ class InstructionsController < ApplicationController
     @instruction = @recipe.instructions.build
   end
 
+  def edit
+    #@instruction
+    @instruction = Instruction.find(params[:id])
+  end
+
   def create
     @instruction = @recipe.instructions.build(instruction_params)
     if @instruction.save
@@ -21,9 +26,6 @@ class InstructionsController < ApplicationController
     @instruction = Instruction.find(params[:id])
   end
 
-  def edit
-    @instruction = Instruction.find(params[:id])
-  end
 
   def update
     if @instruction.update_attributes(params[:instruction]) #anytime writing to db need (instruction_params)
@@ -43,24 +45,24 @@ class InstructionsController < ApplicationController
   end
 
   private
-  def set_instruction
-    @instruction = Instruction.find(params[:instruction_id])
-  end
+  #def set_instruction
+   # @instruction = Instruction.find(params[:instruction_id])
+  #end
 
   def find_recipe
     @recipe = Recipe.find(params[:recipe_id])
   end
 
   def find_instruction
-    @instruction = Instruction.find(params[:id])
+    #@instruction = Instruction.find(params[:id])
+    @instruction = @recipe.instructions.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "The instructions you were looking" +
-                    " for could not be found."
+    flash[:alert] = "The instructions you were looking for could not be found."
     redirect_to recipes_path
   end
 
   # rails 4 of whitelisting params.  Instead of att_accessible on the Model
   def instruction_params
-    params.require(:instruction).permit(:ingredient, :directions)
+    params.require(:instruction).permit( :ingredient, :directions)
   end
 end

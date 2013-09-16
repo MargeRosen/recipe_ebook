@@ -51,13 +51,12 @@ class RecipesController < ApplicationController
   def find_recipe
     @recipe = Recipe.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "The recipe you were looking" +
-                    " for could not be found."
+    flash[:alert] = "The recipe you were looking for could not be found."
     redirect_to recipes_path
   end
 
   # rails 4 of whitelisting params.  Instead of att_accessible on the Model
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :preptime, :servings)
+    params.require(:recipe).permit( :title, :description, :preptime, :servings)
   end
 end

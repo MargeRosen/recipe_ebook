@@ -13,7 +13,10 @@ feature 'Creating Recipes' do
 
     recipe = Recipe.find_by_title("My favorite dish")
     page.current_url.should == recipe_url(recipe)
-    find("title").should have_content("Recipes - Ebook")
+    title = "My favorite dish"
+    find("title").should have_content(title)
+    click_link 'Back to Recipes Page'
+    page.current_path.should == recipes_path
   end
 
   scenario "cannot create a recipe without a title" do

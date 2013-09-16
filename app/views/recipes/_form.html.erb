@@ -1,5 +1,4 @@
 <%= form_for(@recipe) do |f| %>
-  <%= f.error_messages %>
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -17,4 +16,5 @@
     <%= f.text_field :servings %>
   </p>
   <%= f.submit %>
+  <%= f.error_messages %>
 <% end %>

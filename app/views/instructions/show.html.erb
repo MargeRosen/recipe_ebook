@@ -1,11 +1,13 @@
 <div id='instructions'>
   <h2><%= title(@recipe.title, "Recipes") %></h2>
   <h2><%= @recipe.title %></h2>
-  <p>Ingredients: <%= @instruction.ingredient %></p>
+
+  <p>ingredient: <%= @instruction.ingredient %></p>
   <p>Directions: <%= @instruction.directions %></p>
   <%= link_to "New Instruction", new_recipe_instruction_path(@recipe) %>
-  <%= link_to "Edit Instruction ", edit_recipe_instruction_path (@instructions) %>
+  <%= link_to "Edit Instruction", [:edit, @recipe, @instruction] %>
   <%= link_to "Delete Instruction", [@recipe, @instruction],
      :method => :delete,
-     data: { confirm: "Are you sure you want to delete these instructions?" } %>
+     :confirm => "Are you sure you want to delete these instructions?" %>
+  <%= link_to "Back to Recipes Page", recipes_path %>
 </div>
